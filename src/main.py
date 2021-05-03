@@ -4,6 +4,8 @@ __version__ = "0.1.0"
 import argparse
 import logzero
 import settings
+import os
+import xml.etree.ElementTree as etree
 
 class Main:
     def __init__(self):
@@ -17,13 +19,17 @@ class Main:
 
     def main(self, args):
         self.logger.info(args)
-
-    def execute(self):
-        return True
+        asin_set = set()
+        self.logger.info(settings.kindle_xml)
+        for ev, el in etree.iterparse(settings.kindle_xml):
+            if el.tag == "ASIN":
+                asin_set.add(el.text)
+        with open(settings.outfile, 'w', encoding='utf-8') as out:
+            for x in sorted(asin_set):
+                out.write(f'{x}\n')
 
 if(__name__ == '__main__'):
     parser = argparse.ArgumentParser()
     parser.add_argument("--version", action="version", version="%(prog)s (version {version})".format(version=__version__))
-#    parser.add_argument("args1")
     args = parser.parse_args()
     Main().main(args)

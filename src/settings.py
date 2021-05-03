@@ -11,3 +11,7 @@ def load_json_setting(path):
 
 settings_dict = load_json_setting('../config/settings.json')
 secrets_dict = load_json_setting('../config/secrets.json')
+
+kindle_xml = settings_dict['kindle_xml']
+outfile = settings_dict['outfile']
+

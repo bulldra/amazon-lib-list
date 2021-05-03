@@ -1,8 +1,8 @@
 version: '2'
 services:
-  python-boilerplate:
+  amazon-lib-list:
     build: .
-    container_name: 'python-boilerplate'
+    container_name: 'amazon-lib-list'
     tty: true
     volumes:
       - './src:/data/src'

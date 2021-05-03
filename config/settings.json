@@ -1,3 +1,5 @@
 {
-    "logfile" : "../log/info.log"
+    "logfile" : "../log/info.log",
+    "kindle_xml": "../work/KindleSyncMetadataCache.xml",
+    "outfile": "../work/kindle_lib.txt"
 }
