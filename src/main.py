@@ -21,8 +21,8 @@ class Main:
         self.logger.info(f'import {settings.kindle_xml}')
 
         asin_set = set()
-        for ev, el in etree.iterparse(settings.kindle_xml):
-            if el.tag == 'ASIN':
+        for event, el in etree.iterparse(settings.kindle_xml):
+            if event =='end' and el.tag == 'ASIN':
                 asin_set.add(el.text)
         with open(settings.outfile, 'w', encoding='utf-8') as out:
             for x in sorted(asin_set):
