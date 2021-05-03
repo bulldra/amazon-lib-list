@@ -21,5 +21,5 @@ kindle for mac が生成するKindleSyncMetadataCache.xmlをパースしてASIN�
 % sh run.sh
 ```
 
-KindleSyncMetadataCache.xml を work にコピーして蔵書一覧に変換する
+KindleSyncMetadataCache.xml を work にコピーして蔵書一覧に変換する  
 入出力ファイルを変更する場合には settigs.json を編集
