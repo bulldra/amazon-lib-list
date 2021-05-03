@@ -4,7 +4,6 @@ __version__ = "0.1.0"
 import argparse
 import logzero
 import settings
-import os
 import xml.etree.ElementTree as etree
 
 class Main:
@@ -19,8 +18,9 @@ class Main:
 
     def main(self, args):
         self.logger.info(args)
-        asin_set = set()
         self.logger.info(f'import {settings.kindle_xml}')
+
+        asin_set = set()
         for ev, el in etree.iterparse(settings.kindle_xml):
             if el.tag == 'ASIN':
                 asin_set.add(el.text)
