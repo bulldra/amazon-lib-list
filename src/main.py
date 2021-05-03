@@ -20,9 +20,9 @@ class Main:
     def main(self, args):
         self.logger.info(args)
         asin_set = set()
-        self.logger.info(settings.kindle_xml)
+        self.logger.info(f'import {settings.kindle_xml}')
         for ev, el in etree.iterparse(settings.kindle_xml):
-            if el.tag == "ASIN":
+            if el.tag == 'ASIN':
                 asin_set.add(el.text)
         with open(settings.outfile, 'w', encoding='utf-8') as out:
             for x in sorted(asin_set):
