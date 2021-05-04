@@ -20,9 +20,13 @@ class Main:
         self.logger.info(args)
         self.logger.info(f'import {settings.kindle_xml}')
 
+        tag = 'ASIN'
+        if args.tag is not None:
+            tag = args.tag
+
         asin_set = set()
         for event, el in etree.iterparse(settings.kindle_xml):
-            if event =='end' and el.tag == 'ASIN':
+            if event =='end' and el.tag == tag:
                 asin_set.add(el.text)
         with open(settings.outfile, 'w', encoding='utf-8') as out:
             for x in sorted(asin_set):
@@ -30,6 +34,7 @@ class Main:
 
 if(__name__ == '__main__'):
     parser = argparse.ArgumentParser()
-    parser.add_argument("--version", action="version", version="%(prog)s (version {version})".format(version=__version__))
+    parser.add_argument('--version', action='version', version=f'version {__version__})')
+    parser.add_argument('--tag')
     args = parser.parse_args()
     Main().main(args)
